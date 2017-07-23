@@ -119,17 +119,14 @@ namespace {
 
 	file_open_mode_t to_file_open_mode(open_mode_t const mode)
 	{
-		file_open_mode_t const ret =
-			((mode & open_mode::write)
+		return ((mode & open_mode::write)
 				? file_open_mode::read_write : file_open_mode::read_write)
 			| ((mode & open_mode::no_atime)
 				? file_open_mode::no_atime : file_open_mode::read_only)
 			;
-
-		return ret;
 	}
 
-	}
+}
 
 	std::vector<open_file_state> file_view_pool::get_status(storage_index_t const st) const
 	{
